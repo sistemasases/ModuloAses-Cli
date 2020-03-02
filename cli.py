@@ -40,7 +40,7 @@ def valid_workspace( dirpath=None  ):
 
 
 def main():
-    if not valid_workspace( "/usr/local/www/apache24/data/moodle35/blocks/ases" ):
+    if not valid_workspace( "/var/www/html/moodle366/blocks/ases" ):
         print("Espacio de trabajo no válido.")
         return -1
 
