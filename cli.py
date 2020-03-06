@@ -11,6 +11,11 @@ def read_commands():
             exit(0)
         elif input_command == "help":
             print( cl.command_list )
+        else:
+            try:
+                print(cl.command_list[input_command])
+            except:
+                print("Invalid command")
 
 
 def valid_workspace( dirpath=None  ):
