@@ -1,51 +1,51 @@
+from commands import command_list as cl
+from commands import directory_path as dp
 import os
-import command_list as cl
-
 
 def read_commands():
-    input_command = ""
-    while input_command != "exit":
-        print(">>> " , end="")
-        input_command = input()
-        if input_command == "exit":
-            exit(0)
-        elif input_command == "help":
-            print( cl.command_list )
-        else:
-            try:
-                print(cl.command_list[input_command])
-            except:
-                print("Invalid command")
+	input_command = ""
+	while input_command != "exit":
+		print(">>> " , end="")
+		data = [x for x in input().split()]
+		input_command = data[0]
+		if input_command == "exit":
+			exit(0)
+		elif input_command == "help":
+			print([key for key, value in cl.command_list.items()])
+		else:
+			try:
+				print(cl.command_list[input_command](data[1]))
+			except:
+				print("Invalid command: '"+input_command+"'")
 
 
-def valid_workspace( dirpath=None  ):
+def valid_workspace( dirpath = None  ):
 
-    module_path = dirpath if dirpath else os.getcwd()
-    if not os.path.exists( module_path ):
-        return False
+	module_path = dirpath if dirpath else os.getcwd()
+	if not os.path.exists( module_path ):
+		return False
 
-    list_of_important_folders = [
-        "managers",
-        "amd/build",
-        "amd/src",
-        "view",
-        "templates",
-        "style",
-        "core",
-        "classes",
-        "db"
-    ]
-
-    for dir_to_check in list_of_important_folders:
-        if not os.path.exists( os.path.join( dirpath , dir_to_check ) ) :
-            print("No existe el directorio:'" + dir_to_check + "' en '" + os.path.join(dirpath, dir_to_check) + "'")
-            return False
-
-    return True
+	list_of_important_folders = [
+		"managers",
+		"amd/build",
+		"amd/src",
+		"view",
+		"templates",
+		"style",
+		"core",
+		"classes",
+		"db"
+	]
+	
+	for dir_to_check in list_of_important_folders:
+		if not os.path.exists( os.path.join( module_path , dir_to_check ) ) :
+			print("No existe el directorio:'" + dir_to_check + "' en '" + module_path + "'")
+			return False
+	return True
 
 
 def main():
-    if not valid_workspace( "/var/www/html/moodle366/blocks/ases" ):
+    if not valid_workspace( dp.directory_path ):
         print("Espacio de trabajo no válido.")
         return -1
 
