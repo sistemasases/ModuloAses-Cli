@@ -32,7 +32,8 @@ def do_request (js_file):
 	except:
 		return "File name '"+js_file+"' could not be reached."
 
-	print("minifying '"+js_file.lstrip(path_src)+"'...")
+	js_name = js_file.replace(path_src,'')
+	print("minifying '"+js_name+"'...")
 	url = 'https://javascript-minifier.com/raw'
 	data = {'input': to_min}
 	try:
@@ -44,12 +45,12 @@ def do_request (js_file):
 		except:
 			return "Connection could not be established with file '"+js_file+"'"
 
-	min_name = path_build+js_file.lstrip(path_src).rstrip('.js')+'.min.js'
+	min_name = path_build + js_namejs_file.replace('.js','.min.js')
 	with open(min_name, 'w') as m:
 		m.write(r.text)
 	time.sleep(1)
 
-	return js_file.lstrip(path_src)+' minified in '+path_build
+	return js_name + ' minified in ' + path_build
 
 if __name__ == "__main__":
 	minify()
