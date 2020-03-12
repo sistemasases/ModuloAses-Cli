@@ -45,7 +45,7 @@ def do_request (js_file):
 		except:
 			return "Connection could not be established with file '"+js_file+"'"
 
-	min_name = path_build + js_namejs_file.replace('.js','.min.js')
+	min_name = path_build + js_name.replace('.js','.min.js')
 	with open(min_name, 'w') as m:
 		m.write(r.text)
 	time.sleep(1)
