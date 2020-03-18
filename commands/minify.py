@@ -1,11 +1,11 @@
-from commands import directory_path as dp
+from commands import user_info as ui
 import sys
 import requests
 import glob
 import time
 
-path_src = dp.directory_path+'amd/src/'
-path_build = dp.directory_path+'amd/build/'
+path_src = ui.directory_path+'amd/src/'
+path_build = ui.directory_path+'amd/build/'
 
 def minify(option = None):
 	if option == None:
