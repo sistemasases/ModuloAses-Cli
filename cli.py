@@ -1,5 +1,5 @@
 from commands import command_list as cl
-from commands import directory_path as dp
+from commands import user_info as ui
 import os
 
 def read_commands():
@@ -45,7 +45,7 @@ def valid_workspace( dirpath = None  ):
 
 
 def main():
-    if not valid_workspace( dp.directory_path ):
+    if not valid_workspace( ui.directory_path ):
         print("Espacio de trabajo no válido.")
         return -1
 
