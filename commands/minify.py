@@ -36,14 +36,16 @@ def do_request (js_file):
 	print("minifying '"+js_name+"'...")
 	url = 'https://javascript-minifier.com/raw'
 	data = {'input': to_min}
-	try:
-		r = requests.post(url, data)
-	except:
+	counter = 0
+	while counter <= 5:
 		try:
-			time.sleep(2)
 			r = requests.post(url, data)
+			counter = 6
 		except:
-			return "Connection could not be established with file '"+js_file+"'"
+			time.sleep(1)
+			counter+=1
+			if counter == 6:
+				return "Connection could not be established with file '"+js_file+"'"
 
 	min_name = path_build + js_name.replace('.js','.min.js')
 	with open(min_name, 'w') as m:
