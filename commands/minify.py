@@ -7,22 +7,20 @@ import time
 path_src = ui.directory_path+'amd/src/'
 path_build = ui.directory_path+'amd/build/'
 
-def minify(option = None):
-	if option == None:
+def minify(args = None):
+	if args == None:
 		try:
-			option = sys.argv[1]
+			args = {"name": sys.argv[1]}
 		except:
 			print("Missing parameters. Try 'minify help'.")
 			return
 
-	if option == 'all':
+	if args.js_name == 'all':
 		files = [f for f in glob.glob(path_src + "*.js", recursive=True)]
 		for f in files:
 			print(do_request(f))
-	elif option == "help":
-		print('[all, <js file name>]')
 	else:
-		print(do_request(path_src+option))
+		print(do_request(path_src+args.js_name))
 	return
 
 def do_request (js_file):
