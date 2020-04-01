@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from commands import command_list as cl
 from commands import user_info as ui
 import argparse as ap
