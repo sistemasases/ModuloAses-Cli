@@ -4,14 +4,17 @@ from commands import user_info as ui
 import argparse as ap
 import os
 
+#Main parser
 parser = ap.ArgumentParser(prog='asescli', description='Command line tools for ASES developers')
 subparsers = parser.add_subparsers()
 parser.add_argument('--version', action='version', version='1.0.0')
 
+#Minify subparser
 minify_parser = subparsers.add_parser('minify')
 minify_parser.add_argument('js_name', help="Name of the JS file to minify. Write 'all' to minify all JS file in 'amd' directory.")
 minify_parser.set_defaults(func=cl.command_list['minify'])
 
+#Create subparser
 create_parser = subparsers.add_parser('create')
 create_parser.add_argument('file_name', help='Name of the new package to create')
 create_parser.add_argument('-v', default=False, action='store_true', help='Create a view file with the given name')
