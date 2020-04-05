@@ -8,12 +8,6 @@ path_src = ui.directory_path+'amd/src/'
 path_build = ui.directory_path+'amd/build/'
 
 def minify(args = None):
-	if args == None:
-		try:
-			args = {"name": sys.argv[1]}
-		except:
-			print("Missing parameters. Try 'minify help'.")
-			return
 
 	if args.js_name == 'all':
 		files = [f for f in glob.glob(path_src + "*.js", recursive=True)]
@@ -51,7 +45,3 @@ def do_request (js_file):
 	time.sleep(1)
 
 	return js_name + ' minified in ' + path_build
-
-if __name__ == "__main__":
-	minify()
-	sys.exit()
