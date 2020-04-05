@@ -1,7 +1,7 @@
 from commands import minify
+from commands import create
 
 command_list = {
-    "create:manager": "Not available.",
-    "create:view": "Not available",
+    "create": create.create,
     "minify": minify.minify
 }
