@@ -12,6 +12,13 @@ minify_parser = subparsers.add_parser('minify')
 minify_parser.add_argument('js_name', help="Name of the JS file to minify. Write 'all' to minify all JS file in 'amd' directory.")
 minify_parser.set_defaults(func=cl.command_list['minify'])
 
+create_parser = subparsers.add_parser('create')
+create_parser.add_argument('file_name', help='Name of the new package to create')
+create_parser.add_argument('-v', default=False, action='store_true', help='Create a view file with the given name')
+create_parser.add_argument('-m', default=False, action='store_true', help='Create a manager directory (lib and api included) with the given name')
+create_parser.add_argument('-a', default=False, action='store_true', help='Create a JS file in amd/src with the given name')
+create_parser.add_argument('-t', default=False, action='store_true', help='Create a template file with the given name')
+create_parser.set_defaults(func=cl.command_list['create'])
 
 def valid_workspace( dirpath = None  ):
 
