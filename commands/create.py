@@ -21,7 +21,7 @@ def create(args = None):
 
 	if create_manager:
 
-		if create_directory(file_name, ui.direcotry_path + 'managers/'):
+		if create_directory(file_name, ui.directory_path + 'managers/'):
 			api_name = file_name + '_api.php'
 			create_file(api_name, 'managers/' + file_name + '/', 'api')
 
@@ -30,7 +30,7 @@ def create(args = None):
 
 	if create_template:
 		template_name = args.file_name + '.mustache'
-		create_file(template_name, 'templates/', 'template')
+		create_file(template_name, 'templates/', 'mustache')
 
 	if create_view:
 		view_name = args.file_name + '.php'
